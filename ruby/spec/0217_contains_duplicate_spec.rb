@@ -1,7 +1,6 @@
 require_relative '../lib/0217_contains_duplicate'
 
 RSpec.describe ContainsDuplicate do
-  # Shared examples for common test cases
   shared_examples 'a duplicate checker' do |method|
     subject { described_class.public_send(method, array) }
 
