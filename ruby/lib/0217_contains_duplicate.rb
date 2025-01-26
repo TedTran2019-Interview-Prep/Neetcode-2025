@@ -13,7 +13,7 @@ module ContainsDuplicate
 
     nums.any? do |num|
       seen.key?(num) || (seen[num] = true
-                          false)
+                         false)
     end
   end
 
@@ -30,7 +30,7 @@ if __FILE__ == $PROGRAM_NAME
 
   nums = (1..100_000).to_a + [1] # Array with a duplicate
 
-  puts "Time Benchmark:"
+  puts 'Time Benchmark:'
   Benchmark.bm do |x|
     x.report('Solution 1:') { ContainsDuplicate.solution_one(nums) }
     x.report('Solution 2:') { ContainsDuplicate.solution_two(nums) }

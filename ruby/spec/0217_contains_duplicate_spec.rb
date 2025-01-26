@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/0217_contains_duplicate'
 
 RSpec.describe ContainsDuplicate do
