@@ -1,5 +1,5 @@
-```
-input: nums
+```ruby
+# input: nums
 # output: nums[i] equal to product of all eles of nums expect itself
 
 # 1 2 3 4
