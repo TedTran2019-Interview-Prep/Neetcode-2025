@@ -12,5 +12,7 @@
 #         - Search right half, why?
 #         - Right will only have the higher then the lowest value
 #         - If left had the lowest value, it'd be a fully sorted array (search left)
+#           - Or just do min = [min, left].min and return instead of pointlessly continuing searching left
 # Keep track of min (value you tried at xyz index)
-# I think this only works if you do middle < right first too, just in case both halves are sorted, you take the left.```
+# I think this only works if you do middle < right first too, just in case both halves are sorted, you take the left.
+```
