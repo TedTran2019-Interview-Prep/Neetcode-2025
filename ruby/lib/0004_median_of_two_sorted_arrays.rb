@@ -10,6 +10,7 @@ def find_median_sorted_arrays(nums1, nums2)
   right = a.length - 1
   # Guaranteed median
   while true
+    # Number of elements in i + j will total up to half
     i = (left + right) / 2 # A
     j = half - i - 2 # B
 
