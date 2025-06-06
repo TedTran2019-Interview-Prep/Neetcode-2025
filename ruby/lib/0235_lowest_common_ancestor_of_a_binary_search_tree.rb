@@ -1,16 +1,15 @@
-# Definition for a binary tree node.
-# class TreeNode
-#     attr_accessor :val, :left, :right
-#     def initialize(val)
-#         @val = val
-#         @left, @right = nil, nil
-#     end
-# end
+def lowest_common_ancestor(root, p, q)
+  return nil unless root
+  return root if root.val == p.val || root.val == q.val
 
-# @param {TreeNode} root
-# @param {TreeNode} p
-# @param {TreeNode} q
-# @return {TreeNode}
+  if p.val < root.val && q.val < root.val
+    lowest_common_ancestor(root.left, p, q)
+  elsif p.val > root.val && q.val > root.val
+    lowest_common_ancestor(root.right, p, q)
+  else
+    root
+  end
+end
 
 # First time I did this, I made a function to find ancestors
 # Then I found ancestors of both p and q
