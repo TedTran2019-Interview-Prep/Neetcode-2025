@@ -1,3 +1,27 @@
+- Code for the redo on 6/9/25
+
+```ruby
+=begin
+string s, partition s so that every substring is a palindrome
+partition s
+as you're partitioning, return early (kill path) if any prior substring is not a palindrome
+
+result = []
+dfs = lambda do |start, path|
+    result << path.dup and return if start == s.length
+    (start...s.length).times do |index|
+        beginning = s[start..index]
+        next unless beginning == beginning.reverse
+        path << beginning
+        dfs.call(index + 1, path)
+        path.pop
+    end
+end
+dfs.call(0, [])
+result
+=end
+```
+
 ```ruby
 =begin
 Partition a string
