@@ -9,14 +9,14 @@ class KthLargest
   def add(val)
     @heap << val
     @heap.pop while @heap.size > @k
-    @heap.peak
+    @heap.peek
   end
 
   private
 
   def create_heap(nums)
     min_heap = Heap.new
-    nums.each { |num| min_heap << num }
+    min_heap.heapify(nums)
     min_heap.pop while min_heap.size > @k
     min_heap
   end
