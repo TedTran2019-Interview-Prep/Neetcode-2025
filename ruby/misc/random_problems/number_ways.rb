@@ -1,4 +1,23 @@
 def number_ways(n, faces, total)
+  result = 0
+
+  dfs = lambda do |sum, dice_amount|
+    return if sum > total
+    return if dice_amount.negative?
+    if sum == total && dice_amount.zero?
+      result += 1
+    end
+
+    (1..faces).each do |face|
+      dfs.call(sum + face, dice_amount - 1)
+    end
+  end
+
+  dfs.call(0, n)
+  result
+end
+
+def number_ways(n, faces, total)
   result = []
 
   dfs = lambda do |sum, path|
