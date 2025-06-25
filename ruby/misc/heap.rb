@@ -4,6 +4,7 @@
 class Heap
   include Enumerable
   attr_reader :size
+  alias length size
 
   def initialize(compare_symbol = :<, &compare_fn)
     @heap = []
