@@ -3,7 +3,7 @@
 DIRS = [[0, -1], [1, 0], [-1, 0], [0, 1], [1, 1], [1, -1], [-1, 1], [-1, -1]].freeze
 
 def solve_n_queens(n)
-  board = Array.new(n) { '.' * n }
+  initial_board = Array.new(n) { '.' * n }
   result = []
 
   dfs = lambda do |board, row, queens_placed|
@@ -26,7 +26,7 @@ def solve_n_queens(n)
     end
   end
 
-  dfs.call(board, 0, 0)
+  dfs.call(initial_board, 0, 0)
   result
 end
 
@@ -35,6 +35,7 @@ def queen_attack_in_dir?(board, row, col, dy, dx, n)
     row += dy
     col += dx
     break if out_of_bounds?(row, col, n)
+
     return true if board[row][col] == 'Q'
   end
 
