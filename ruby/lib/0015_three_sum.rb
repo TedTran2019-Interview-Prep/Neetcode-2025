@@ -15,7 +15,7 @@ def three_sum(nums)
         result = [nums[i], nums[left], nums[right]]
         results << result
         left += 1
-        right += 1
+        right -= 1
 
         left += 1 while left < right && nums[left] == nums[left - 1]
         right -= 1 while left < right && nums[right] == nums[right + 1]
