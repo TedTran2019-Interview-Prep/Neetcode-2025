@@ -2,7 +2,8 @@
 
 def spiral_order(matrix)
   spiral = []
-  goal_length = matrix.flatten.length
+  # goal_length = matrix.flatten.length
+  goal_length = matrix[0].length * matrix.length
   top = 0
   left = 0
   right = matrix[0].length - 1
