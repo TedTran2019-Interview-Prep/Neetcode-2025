@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def build_tree(preorder, inorder)
   return if preorder.empty? || inorder.empty?
 
