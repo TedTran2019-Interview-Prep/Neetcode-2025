@@ -6,7 +6,7 @@ src, dst, k
 return cheapest price from src to dst with at most k stops, else -1
 
 Problem:
-Dijkstra's returns shortest path (chapest flight)
+Dijkstra's returns shortest path (cheapest flight)
 But there might be a more expensive flight within the k stop limit
 E.g, cheaper flight takes 2 stops while more expensive takes 1
 Do Dijkstra's but whenever number stops is > K, remove it as a possibility?
