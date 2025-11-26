@@ -1,5 +1,22 @@
 # frozen_string_literal: true
 
+# This much cleaner memoized top-down solution worked perfectly fine
+# Redid this problem since I got it on a Codesignal test, it was pretty easy
+def change(amount, coins)
+  memo = Array.new(coins.length) { Array.new(amount, -1) }
+  dfs = lambda do |index, total|
+    return 1 if total == amount
+    return 0 if index >= coins.length
+    return memo[index][total] if memo[index][total] > -1
+
+    take = 0
+    take = dfs.call(index, total + coins[index]) unless coins[index] + total > amount
+    skip = dfs.call(index + 1, total)
+    memo[index][total] = take + skip
+  end
+  dfs.call(0, 0)
+end
+
 # Non-space optimized DP solution
 # Have to do amount - x since index and the number itself are swapped
 # E.g, index 4000 refers to amount 0... index 0 refers to amount 4000
