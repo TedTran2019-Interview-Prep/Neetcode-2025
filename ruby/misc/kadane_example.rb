@@ -12,3 +12,16 @@ def kadane(array)
 
   max_value
 end
+
+# Kadane's
+def max_subarray_sum(arr)
+  max_sum = arr[0]
+  max_ending = arr[0]
+
+  (1...arr.length).each do |i|
+    max_ending = [max_ending + arr[i], arr[i]].max
+    max_sum = [max_sum, max_ending].max
+  end
+
+  max_sum
+end
