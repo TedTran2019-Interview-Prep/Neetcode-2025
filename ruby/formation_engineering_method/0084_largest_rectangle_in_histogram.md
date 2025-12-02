@@ -77,3 +77,27 @@
 # L             R
 # Right goes <-- all the way, doesn't achieve correct answer
 ```
+
+```ruby
+=begin
+heights representing histogram's bar height (each width = 1)
+return area of largest rectangle in histogram
+
+Naive:
+At every integer, move forward and get the total area possible by keeping track of min height, constantly taking the max
+1 * 6
+1 * 5
+2 * 4 (5 * 2 first)
+2 * 3, 6 * 1
+2 * 2
+3 * 1
+
+Better:
+If all same, can just take height * # of heights
+If all increasing, each can be height * # of heights moving forward for each index
+If all decreasing
+    current height can be itself
+    next height can be itself * how many bigger/same heights behind it
+much easier problem when visualized
+=end
+```

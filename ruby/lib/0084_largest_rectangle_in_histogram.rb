@@ -1,3 +1,27 @@
+# Redo
+def largest_rectangle_area(heights)
+  stack = []
+  max = 0
+  heights.each_with_index do |height, idx|
+    last_idx = idx
+    while !stack.empty? && stack[-1][0] > height
+      start_height, start_idx = stack.pop
+      area = start_height * (idx - start_idx)
+      max = [max, area].max
+      last_idx = start_idx
+    end
+
+    stack << [height, last_idx]
+  end
+
+  stack.each do |height, start_idx|
+    area = (heights.length - start_idx) * height
+    max = [max, area].max
+  end
+
+  max
+end
+
 def largest_rectangle_area(heights)
   stack = []
   max_area = 0
