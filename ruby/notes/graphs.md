@@ -36,6 +36,7 @@ Aka building cycles by CONSUMING edges
 Purpose: Topological sort
 Postorder DFS then reverse.
 Add node when all children visited, then reverse to find path to handle all dependencies.
+Only works on DAGs.
 
 ## Kahn
 
