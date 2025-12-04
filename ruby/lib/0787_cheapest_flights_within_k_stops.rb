@@ -16,6 +16,25 @@ def find_cheapest_price(n, flights, src, dst, k)
   prices[dst] == Float::INFINITY ? -1 : prices[dst]
 end
 
+# Dijkstra's with stops fails on 49/58
+def find_cheapest_price(n, flights, src, dst, k)
+  graph = Hash.new { |h, k| h[k] = [] }
+  flights.each { |from, to, price| graph[from] << [to, price] }
+  heap = Heap.new { |a, b| a[1] < b[1] } # Total travel price for edge
+  heap << [src, 0, 0] # city, price, stops
+  until heap.empty?
+    city, total_price, stops = heap.pop
+    return total_price if city == dst
+
+    graph[city].each do |dst_city, travel_price|
+      next if stops > k
+
+      heap << [dst_city, travel_price + total_price, stops + 1]
+    end
+  end
+  -1
+end
+
 # Naive brute force, times out on test case 30/58
 def find_cheapest_price(n, flights, src, dst, k)
   flight_map = Hash.new { |h, k| h[k] = [] }
