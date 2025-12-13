@@ -1,5 +1,46 @@
 # frozen_string_literal: true
 
+# Solution that passes all test cases
+def solve_n_queens(n)
+  board = Array.new(n) { '.' * n }
+  answers = []
+  @col = Set.new
+  @frd_diag = Set.new
+  @rev_diag = Set.new
+  dfs = lambda do |row, queens|
+    if queens == n
+      answers << board.map(&:dup)
+      return
+    end
+
+    (0...n).each do |col|
+      next unless valid?(row, col)
+
+      board[row][col] = 'Q'
+      @col << col
+      @frd_diag << row - col
+      @rev_diag << row + col
+      dfs.call(row + 1, queens + 1)
+      @col.delete(col)
+      @frd_diag.delete(row - col)
+      @rev_diag.delete(row + col)
+      board[row][col] = '.'
+    end
+  end
+  dfs.call(0, 0)
+  answers
+end
+
+def valid?(row, col)
+  return false if @col.include?(col)
+  return false if @frd_diag.include?(row - col)
+  return false if @rev_diag.include?(row + col)
+
+  true
+end
+
+#########
+
 DIRS = [[0, -1], [1, 0], [-1, 0], [0, 1], [1, 1], [1, -1], [-1, 1], [-1, -1]].freeze
 
 def solve_n_queens(n)

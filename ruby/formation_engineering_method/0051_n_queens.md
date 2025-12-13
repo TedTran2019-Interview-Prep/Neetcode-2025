@@ -1,5 +1,25 @@
 ```ruby
 =begin
+At each row, place a queen (try every column)
+Just need to check and see if valid placement
+No queens in any 8 dirs upon placement-- what's a better way then stepping through all 8 dirs from the queen?
+
+Row can be skipped (you won't place on the same row again)
+Put col in hashmap (col)
+Put forward diagonal in hashmap (row - col)
+Put reverse diagonal in hashmap (row + col)
+y, x
+[1, 1] -> 0
+[2, 2] -> (0, 4)
+[3, 3] -> 0
+[1, 3] -> 4
+[3, 1] -> 4
+(3 - 2).abs == (1 - 2).abs
+=end
+```
+
+```ruby
+=begin
 n queens on nxn chessboard so no two queens can attack each other
 Given n, return all distinct solutions to n-queens
 'Q' is queen, '.' is empty space
