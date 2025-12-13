@@ -14,7 +14,7 @@
   - Store root node value
   - Place last value into 1st (then pop last)
   - swap with child that violates the heap rule
-    - if both violate, move towards the more extreme violation
+    - choose node that belongs higher up in tree as child (left vs right)
       - aka smaller child in min heap, bigger child in max heap
 - Heapify given an array
   - Convert array into 1-based indexing by unshifting dummy element
