@@ -25,3 +25,23 @@
 # Return index + 1 of first positive value or 'x'
 # If not, return nums.length + 1
 ```
+
+```ruby
+=begin
+Dec 17th, 2025 redo
+unsorted nums
+smallest positive integer not present in nums
+Numbers can be positive or negative
+O(N) time, O(1) space
+
+Go through array once, set all zero/negative values/values over nums.length to 10**5 + 1
+(None of these values can be represented in the array anyway)
+Now that we only have bounded positive numbers...
+Go through the array, set index (num - 1) to the negative version of itself (unless already negative)
+If num is negative, change it to positive before doing this conversion
+Go through the entire array:
+If negative at that position == skip
+If found positive, return index + 1
+If out of bounds, return nums.length + 1
+=end
+```

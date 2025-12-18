@@ -21,6 +21,26 @@ def first_missing_positive(nums)
   nums.length + 1
 end
 
+# Dec 17th redo
+def first_missing_positive(nums)
+  nums.each_with_index do |num, idx|
+    nums[idx] = 10**5 + 1 if num <= 0 || num > nums.length
+  end
+
+  nums.each_with_index do |num, idx|
+    positive = num.abs
+    next if positive > nums.length
+
+    nums[positive - 1] *= -1 if nums[positive - 1].positive?
+  end
+
+  nums.each_with_index do |num, idx|
+    return idx + 1 if num.positive?
+  end
+
+  nums.length + 1
+end
+
 def first_missing_positive(nums)
   # First run to set pointless values to 'x'
   nums.each_with_index do |num, index|
