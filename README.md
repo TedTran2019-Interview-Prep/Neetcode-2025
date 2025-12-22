@@ -1,8 +1,8 @@
-# Neetcode's 150
+# Neetcode's 250
 
 Just running it back!
 
-Current progress: **71/150**
+Current progress: **177/250**
 
 1. How is this problem grouped? (The pattern/patterns involved)
 2. What problems are similar to this one? How are they different?
