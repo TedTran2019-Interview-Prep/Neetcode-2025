@@ -14,6 +14,20 @@ def preorder_traversal(root)
   result
 end
 
+# Redo
+def preorder_traversal(root)
+  traversal = []
+  dfs = lambda do |node|
+    return nil unless node
+
+    traversal << node.val
+    dfs.call(node.left)
+    dfs.call(node.right)
+  end
+  dfs.call(root)
+  traversal
+end
+
 # Preorder traversal but using iteration
 # Use a stack and toss root in
 # [1] -> eval 1, then toss right value first then left (right is evaluated last)
