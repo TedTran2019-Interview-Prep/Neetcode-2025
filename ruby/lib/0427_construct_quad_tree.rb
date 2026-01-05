@@ -13,15 +13,15 @@ def construct(grid)
       end
     end
 
-    if one_count > 0 && zero_count > 0
+    if one_count.positive? && zero_count.positive?
       Node.new(false, false,
                dfs.call(sy, sx, (sy + ey) / 2, (sx + ex) / 2), # top left
                dfs.call(sy, (sx + ex) / 2, (sy + ey) / 2, ex), # top right
                dfs.call((sy + ey) / 2, sx, ey, (sx + ex) / 2), # bottom left
                dfs.call((sy + ey) / 2, (sx + ex) / 2, ey, ex)) # bottom right
-    elsif one_count > 0
+    elsif one_count.positive?
       Node.new(true, true)
-    elsif zero_count > 0
+    elsif zero_count.positive?
       Node.new(false, true)
     end
   end
