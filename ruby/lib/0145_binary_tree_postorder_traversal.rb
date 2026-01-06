@@ -12,3 +12,24 @@ def postorder_traversal(root)
   dfs.call(root)
   traversal
 end
+
+# Iterative postorder
+def postorder_traversal(root)
+  stack = []
+  stack << root if root
+  visited = Set.new
+  traversal = []
+  until stack.empty?
+    curr = stack.pop
+
+    if visited.include?(curr)
+      traversal << curr.val
+    else
+      stack << curr
+      visited << curr
+      stack << curr.right if curr.right
+      stack << curr.left if curr.left
+    end
+  end
+  traversal
+end
