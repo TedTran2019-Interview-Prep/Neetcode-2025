@@ -16,5 +16,9 @@ ELSE
 It's because you process the left values first that you push the rights first, like in preorder.
 Adding on second visit is genius, clean clever NC solution
 When all of a node's subtrees are visited, you can add that node too
+
+Clever way that makes it almost like preorder:
+preorder: process, right, left
+postorder: process, left, right, reverse
 =end
 ```

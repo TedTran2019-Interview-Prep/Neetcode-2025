@@ -33,3 +33,17 @@ def postorder_traversal(root)
   end
   traversal
 end
+
+# Iterative postorder w/ a clever trick
+def postorder_traversal(root)
+  stack = []
+  stack << root if root
+  traversal = []
+  until stack.empty?
+    curr = stack.pop
+    traversal << curr.val
+    stack << curr.left if curr.left
+    stack << curr.right if curr.right
+  end
+  traversal.reverse
+end
