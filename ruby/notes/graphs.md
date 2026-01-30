@@ -43,3 +43,21 @@ Only works on DAGs.
 Purpose: Topological sort using BFS
 
 ## Bellman-Ford
+
+## Floyd-Warshall
+
+Purpose: Shortest path between ALL pairs of vertices
+V x V array of minimum distances (start out as infinity default values)
+For each node, set its distance from itself to 0
+Then go through the edges, filling out edge(a, b) = weight in the graph
+Now a triply nested loop: 3x nodes.length.times: k, i, j
+
+```ruby
+if dist[i][j] > dist[i][k] + dist[k][j]
+    dist[i][j] = dist[i][k] + dist[k][j]
+```
+
+k (outer loop) is an intermediate node
+For every pair of vertices (i, j), can we find a shorter path by going through k?
+Is it better to go directly from i to j, to go from i to k THEN k to j?
+Cool DP algorithm!
