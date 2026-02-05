@@ -20,6 +20,8 @@ BFS w/ min heap, keep adding unvisited minimum cost neighbors until all nodes vi
 Works starting at any node!
 (Similar to Dijkstra, BFS w/ min heap)
 
+## Kruskal's
+
 ## Hierholzer
 
 Problems:
