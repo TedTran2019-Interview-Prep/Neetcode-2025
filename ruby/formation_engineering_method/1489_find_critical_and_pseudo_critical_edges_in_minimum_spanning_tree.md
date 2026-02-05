@@ -38,5 +38,12 @@ Prim's was the wrong choice here... if I could add all edges to the heap at once
 Need to use Kruskal's instead? (Union find is needed to see, "are these two nodes already connected, even indirectly?")
 Work on this tomorrow-- today was for reviewing Prim's and learning the problem
 Tomorrow will be for solving it/learning Kruskal's algorithm and also reviewing union find
+
+Both union find and Kruskal's are easy, but this problem is still pretty tough
+1. Find MST weight using Kruskal's
+2. Run through edges, for every edge...
+- Can this MST exist without this edge? If no, critical
+else
+- Can this MST exist with this edge? If so, pseudo-critical
 =end
 ```

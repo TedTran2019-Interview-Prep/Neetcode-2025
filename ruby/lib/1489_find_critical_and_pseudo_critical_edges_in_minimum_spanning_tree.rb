@@ -1,5 +1,76 @@
 # frozen_string_literal: true
 
+# Solution utilizing Kruskal's
+def find_critical_and_pseudo_critical_edges(n, edges)
+  edges.each_with_index { |edge, idx| edge << idx }
+  edges.sort_by! { |edge| edge[2] }
+  critical = []
+  pseudo_critical = []
+  uf = UnionFind.new(n)
+  mst_weight = 0
+  edges.each { |a, b, weight, _idx| mst_weight += weight if uf.union(a, b) }
+  edges.each do |a, b, edge_weight, edge_idx|
+    # Try seeing if MST can exist without this edge
+    uf = UnionFind.new(n)
+    current_mst_weight = 0
+    edges.each do |v1, v2, weight, idx|
+      next if idx == edge_idx
+
+      current_mst_weight += weight if uf.union(v1, v2)
+    end
+    # If cannot exist without this edge, it's critical
+    if uf.size.max != n || current_mst_weight > mst_weight
+      critical << edge_idx
+      next
+    end
+
+    # Else, try seeing if MST can exist with this edge
+    uf = UnionFind.new(n)
+    current_mst_weight = 0
+    uf.union(a, b)
+    current_mst_weight += edge_weight
+    edges.each do |v1, v2, weight, idx|
+      next if idx == edge_idx
+
+      current_mst_weight += weight if uf.union(v1, v2)
+    end
+    pseudo_critical << edge_idx if current_mst_weight == mst_weight
+  end
+  [critical, pseudo_critical]
+end
+
+# Coded Union Find on the spot
+class UnionFind
+  attr_accessor :parents, :size
+
+  def initialize(size)
+    @parents = (0...size).to_a
+    @size = Array.new(size, 1)
+  end
+
+  def find(node)
+    until node == @parents[node]
+      @parents[node] = @parents[@parents[node]]
+      node = @parents[node]
+    end
+    node
+  end
+
+  def union(node1, node2)
+    root1 = find(node1)
+    root2 = find(node2)
+    return false if root1 == root2
+
+    if @size[root1] > @size[root2]
+      @size[root1] += @size[root2]
+      @parents[root2] = root1
+    else
+      @size[root2] += @size[root1]
+      @parents[root1] = root2
+    end
+  end
+end
+
 # Attempted solution utilizing Prim's that did not work at all
 def find_critical_and_pseudo_critical_edges(n, edges)
   graph = Hash.new { |h, k| h[k] = [] }

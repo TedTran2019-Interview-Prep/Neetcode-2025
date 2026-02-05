@@ -22,6 +22,10 @@ Works starting at any node!
 
 ## Kruskal's
 
+Purpose: find minimum spanning tree (like Prim's)
+Sort list of edges by weight, then union. If fails (both nodes already connected) then don't add
+edge, otherwise add it.
+
 ## Hierholzer
 
 Problems:
